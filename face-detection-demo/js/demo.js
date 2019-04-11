@@ -124,16 +124,16 @@
 				if ((typeof MediaStream !== "undefined" && MediaStream !== null) && stream instanceof MediaStream) {
 		
 					if (video.mozSrcObject !== undefined) { //FF18a
-						video.mozSrcObject = stream;
+						video.mozSrc = stream;
 					} else { //FF16a, 17a
-						video.srcObject = stream;
+						video.src = stream;
 					}
 
 					return video.play();
 
 				} else {
 					var vendorURL = window.URL || window.webkitURL;
-					video.srcObject = vendorURL ? vendorURL.createObjectURL(stream) : stream;
+					video.src = vendorURL ? vendorURL.createObjectURL(stream) : stream;
 				}
 
 				video.onerror = function () {
